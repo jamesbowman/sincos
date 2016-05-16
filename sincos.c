@@ -43,7 +43,7 @@ static int16_t _cos(int16_t y)
 /*
  isin() and icos() are integer sine and cosine functions. The input
  angle is in Furmans. (A Furman is 1/65536 of a circle. One degree
- is about 182 Furmans. One radian is 32768 Furmans.)
+ is ~182 Furmans. One radian is ~10430 Furmans.)
  The result is a 16-bit signed integer, scaled so that -32767 represents
  -1.0 and +32767 represents +1.0.
 */
