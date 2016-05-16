@@ -22,7 +22,9 @@ if __name__ == '__main__':
     for l in open("results.txt"):
         (angle, sine) = [int(f) for f in l.split()]
         th = angle * 2 * math.pi / 0x10000
-        expected = 32768.0 * math.sin(th)
-        print angle, sine, expected
+        expected = 32767.0 * math.sin(th)
+        # print angle, sine, expected
         errors.append((abs(sine - expected), angle, sine, expected))
+    print len(errors), 'values tested'
     print 'max error %f for angle=%d: actual=%d expected=%f' % max(errors)
+    print 'rms error', math.sqrt(sum([e[0]**2 for e in errors]) / len(errors))
