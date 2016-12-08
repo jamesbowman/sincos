@@ -10,34 +10,34 @@
 
 static int16_t _sin(int16_t y)
 {
-  const int16_t s1 = 0x6487;
-  const int16_t s3 = 0x2953;
-  const int16_t s5 = 0x04f8;
+  const int16_t s1 =  0x6487;
+  const int16_t s3 = -0x2953;
+  const int16_t s5 =  0x04f8;
 
   int32_t z, prod, sum;
   z = ((int32_t)y * y) >> 12;
   prod = (z * s5) >> 16;
-  sum = s3 - prod;
+  sum = s3 + prod;
   prod = (z * sum) >> 16;
-  sum = s1 - prod;
+  sum = s1 + prod;
 
   return (int16_t)((y * sum) >> 13);
 }
 
 static int16_t _cos(int16_t y)
 {
-  const int16_t c0 = 0x7fff;
-  const int16_t c2 = 0x4ee9;
-  const int16_t c4 = 0x0fbd;
+  const int16_t c0 =  0x7fff;
+  const int16_t c2 = -0x4ee9;
+  const int16_t c4 =  0x0fbd;
 
   int32_t z, prod, sum;
   z = ((int32_t)y * y) >> 12;
   prod = (z * c4) >> 16;
-  sum = c2 - prod;
+  sum = c2 + prod;
 
   prod = (z * sum) >> 15;
 
-  return (int16_t)(c0 - prod);
+  return (int16_t)(c0 + prod);
 }
 
 /*
@@ -59,4 +59,17 @@ int isin(int16_t x)
 int icos(int16_t x)
 {
   return isin(x + 0x4000);
+}
+
+// START OF STANDALONE TEST
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+  int i;
+  for (i = 0; i < 0x10000; i++)
+    printf("%d\n", isin(i));
+  exit(0);
 }

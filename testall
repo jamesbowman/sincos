@@ -1,0 +1,12 @@
+set -e
+
+cc -Wall -Werror sincos.c
+./a.out > c.output
+diff -w c.output golden
+
+gforth sincos32.fs > forth.output
+diff -w forth.output golden
+
+iverilog -g2 -s top sincos.v
+./a.out > verilog.output
+diff -w verilog.output golden
