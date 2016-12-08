@@ -1,5 +1,3 @@
-#include <stdint.h>
-
 /*
  * This algorithm is taken from
  * "Math Toolkit for Real-Time Programming" by Jack Crenshaw.
@@ -63,13 +61,17 @@ int icos(int16_t x)
 
 // START OF STANDALONE TEST
 
-#include <stdio.h>
-#include <stdlib.h>
-
-int main()
+void setup()
 {
-  int i;
-  for (i = 0; i < 0x10000; i++)
-    printf("%d %d\n", isin(i), icos(i));
-  exit(0);
+  Serial.begin(115200);
+  for (long i = 0; i < 0x10000L; i++) {
+    Serial.print(isin(i));
+    Serial.print(' ');
+    Serial.println(icos(i));
+  }
+  Serial.print('#');
+}
+
+void loop()
+{
 }

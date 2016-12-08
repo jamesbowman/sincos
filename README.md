@@ -25,3 +25,4 @@ Currently there are implementaions for:
  * plain C (`sincos.c`)
  * ANS Forth with 32-bit or 64-bit cells (`forth32.fs`)
  * Verilog (`sincos.v`)
+ * Arduino processing (`sincos.ino`)
