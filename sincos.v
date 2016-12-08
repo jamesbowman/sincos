@@ -49,21 +49,30 @@ module isin(
   assign s = n[2] ? -sa : sa;
 endmodule
 
+module icos(
+  input signed [15:0] x,
+  output signed [15:0] s);
+
+  isin _isin(.x(x + 16'h4000), .s(s));
+
+endmodule
+
 // START OF STANDALONE TEST
 
 module top();
   integer i;
   reg signed [15:0] x;
-  wire signed [15:0] s;
+  wire signed [15:0] ss, sc;
 
-  isin _isin(.x(x), .s(s));
+  isin _isin(.x(x), .s(ss));
+  icos _icos(.x(x), .s(sc));
 
   initial begin
     i = 0;
     for (i = 0; i < 65536; i = i + 1) begin
       x = i;
       #1;
-      $display ("%d", s);
+      $display ("%d %d", ss, sc);
     end
   end
 endmodule

@@ -41,7 +41,7 @@ hex
 ;
 
 : _cos ( y -- cos )
-    2* 2* dup h*            ( z )
+    2* 2* s16 dup h*            ( z )
     dup c4 h* c2 +          ( z sum )
     p*                      ( prod )
     c0 +
@@ -66,7 +66,7 @@ decimal
 
 : x
     $10000 0 do
-        i isin . cr
+        i isin . i icos . cr
     loop
 ;
 x bye
