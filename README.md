@@ -2,6 +2,8 @@
 
 Efficient implementations of the transcendental functions
 
+[![Build Status](https://travis-ci.org/jamesbowman/sincos.svg?branch=master)](https://travis-ci.org/jamesbowman/sincos)
+
 This algorithm is taken from
 "Math Toolkit for Real-Time Programming" by Jack Crenshaw.
 
