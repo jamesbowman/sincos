@@ -10,3 +10,5 @@ diff -w forth.output golden
 iverilog -g2 -s top sincos.v
 ./a.out > verilog.output
 diff -w verilog.output golden
+
+python measure.py
