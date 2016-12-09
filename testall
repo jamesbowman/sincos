@@ -1,5 +1,8 @@
 set -e
 
+python sincos.py > python.output
+diff -w python.output golden
+
 cc -Wall -Werror sincos.c
 ./a.out > c.output
 diff -w c.output golden
